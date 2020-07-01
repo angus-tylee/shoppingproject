@@ -1,0 +1,32 @@
+plugins {
+	id "application"
+}
+
+repositories {
+   jcenter()
+}
+
+dependencies {
+   testImplementation group: 'junit', name: 'junit', version: '4.+'
+   implementation group: 'com.google.guava', name: 'guava', version: '28.0-jre'
+   implementation group: 'com.h2database', name: 'h2', version: '1.4.+'
+   implementation group: 'net.sf.oval', name: 'oval', version: '1.90'
+   testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.+'
+   testImplementation group: 'org.assertj', name: 'assertj-swing-junit', version: '3.+'
+   def joobyVer = '1.6.+'
+   implementation group: 'org.jooby', name: 'jooby-netty', version: joobyVer
+   implementation group: 'org.jooby', name: 'jooby-gson', version: joobyVer
+}
+
+run {
+	standardInput = System.in
+}
+
+mainClassName = "Administration"
+
+sourceSets {
+     web {
+resources {
+           srcDir 'public'
+        }
+} }

@@ -1,0 +1,74 @@
+@startuml
+ ' style tweaks to make the diagram a little more readable
+skinparam style strictuml
+
+ 
+title Delete Product (using Database)
+ 
+
+actor User as user
+participant "Administration" as main << main >>
+participant "MainMenu" as menu << frame >>
+participant "ProductReport" as dialog << dialog >>
+participant "DAOproductmanager" as dao << ProductDAO >>
+participant "SimpleListModel\n:myModel" as model
+database "Database" as db
+ 
+main++
+create menu
+main -> menu : « construct »
+ 
+ 
+user ->> menu : clicks 'View Products'
+menu++
+ 
+ 
+create dialog
+menu -> dialog++ : « construct »
+ 
+ 
+create dao
+dialog -> dao : « construct »
+ 
+dialog -> dao++ : getProducts()
+dao -> db++ : select * from Products order by PRODUCTID
+return ResultSet
+dao -> dao : reconstruct products\nfrom ResultSet
+return products
+ 
+create model
+dialog -> model : « construct »
+dialog -> dialog : JListProducts.setModel(myModel)
+
+model--
+dialog -> model++ : myModel.updateItems(products)
+model--
+
+
+note left : All products become\nvisible to user
+
+user -> dialog : click product
+user -> dialog : click "Delete"
+dialog -> user : showConfirmDialog(this, "Confirm removal of product")
+user -> dialog : click "Yes"
+
+
+
+
+dialog -> dao++ : removeProduct(product)
+dao -> db++ : delete from products where productID = product.getProductID()
+dao--
+db--
+
+dialog -> model-- : myModel.updateItems(products)
+
+note left: deleted product\nis no longer visible\n to user
+
+
+
+
+
+
+
+ 
+@enduml

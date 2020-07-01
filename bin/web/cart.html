@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html ng-app="ShoppingApp">
+    <head>
+        <title>Shopping Cart</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/ngStorage.min.js"></script>
+        <script src="js/shopping.js"></script>
+    </head>
+
+    <body ng-controller="ShoppingCartController as CartCtrl" >
+    <center>
+        
+        <div ng-include="'menu.html'" ></div> 
+        
+        
+        <div class="container-fluid pt-4 pb-4 text-center" id="top-banner">
+                    <h1 class="text">Shopping Cart</h1>
+            </div>
+        
+        <div class="container" id="cart-table">
+        <table class="table ">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+            <tr ng-repeat="item in CartCtrl.items">
+               <td>{{item.product.name}}</td>
+               <td>{{item.product.listPrice}}</td>
+               <td>{{item.quantityPurchased}}</td>
+               <td>{{item.getItemTotal()}}</td>
+            </tr>
+            
+    
+        </table>
+           
+          <button type="button" class="btn btn-info" ng-click="CartCtrl.checkOutCart(cart)">Check out cart</button>
+
+        </div>
+    </center>
+    </body>
+</html>
+

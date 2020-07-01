@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="ShoppingApp">
+    <head>   
+        <title>Create Account</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/ngStorage.min.js"></script>
+        <script src="js/shopping.js"></script>
+    </head>
+
+    <body> 
+    <center>
+
+        <div ng-include="'menu.html'" ></div> 
+
+        <div class="container-fluid" id="top-banner">
+            <div class="row">
+                <div class="col pt-4 pb-4 text-center">
+                    <h3 class="text">Confirm Addition to Cart</h3>
+                </div>
+            </div>
+        </div>
+
+        {{CartCtrl.selectedProduct.name}}
+
+        <div ng-controller="ShoppingCartController as CartCtrl" class="container" id="product-table">
+            <table class="table ">
+                <tr>
+                    <th>Product ID:</th>
+                    <td> {{CartCtrl.selectedProduct.productID}} </td>
+                </tr>
+                <tr>
+                    <th>Name:</td>
+                    <td>{{CartCtrl.selectedProduct.name}}</td>
+                </tr>
+                <tr>
+                    <th>Description:</td>
+                    <td>{{CartCtrl.selectedProduct.description}}</td>
+                </tr>
+                <tr>
+                    <th>Category:</td>
+                    <td>{{CartCtrl.selectedProduct.category}}</td>
+                </tr>
+                <tr>
+                    <th>Quantity Available:</td>
+                    <td>{{CartCtrl.selectedProduct.stockQuantity}}</td>
+                </tr>
+                <tr>
+                    <th>Price:</td>
+                    <td>{{CartCtrl.selectedProduct.listPrice}}</td>
+                </tr>
+            </table>
+        
+
+        <div class="container pt-4 pb-4 " id="add-to-cart">
+            <p class="text-center"> Quantity to buy? <p>
+            <form ng-submit="CartCtrl.addToCart(quantity)">
+                <tr>
+                    <th>How many?</th>
+                    <td>
+                        <input ng-model="quantity" type="number" class="form-control" id="addcartquantity" placeholder="Enter quantity">
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-info" >Add to cart</button>
+                    </td>
+                </tr>
+            </form>
+        </div>
+                </div>
+
+    </center>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+@startuml
+ ' style tweaks to make the diagram a little more readable
+skinparam style strictuml
+ 
+title Search by ProductID (using database)
+ 
+actor User as user
+participant "Administration" as main << main >>
+participant "MainMenu" as menu << frame >>
+participant "ProductReport" as dialog << dialog >>
+participant "DAOproductmanager" as dao << ProductDAO >>
+participant "SimpleListModel\n:myModel" as model
+database "Database" as db
+ 
+main++
+create menu
+main -> menu : « construct »
+ 
+ 
+user ->> menu : clicks 'View Products'
+menu++
+ 
+ 
+create dialog
+menu -> dialog++ : « construct »
+ 
+ 
+create dao
+dialog -> dao : « construct »
+ 
+dialog -> dao++ : getProducts()
+dao -> db++ : select * from Products order by PRODUCTID
+return ResultSet
+dao -> dao : reconstruct products\nfrom ResultSet
+return products
+ 
+create model
+dialog -> model : « construct »
+dialog -> dialog : JListProducts.setModel(myModel)
+
+model--
+dialog -> model++ : myModel.updateItems(products)
+model--
+
+
+note left : All products become\nvisible to user
+
+user -> dialog : enters productID into search bar
+
+user -> dialog : clicks "Search"
+
+dialog -> dialog : JtextfieldIDsearch.getText : idSearch
+
+dialog -> dao : productSearch(idSearch)
+
+dao -> db++ : select * from Products where productID = idSearch
+return idResult
+
+dialog -> model++ : myModel.updateItems(idResult)
+model--
+
+note left : Search results now visible to user
+ 
+user -> dialog : clear product ID from the search box
+
+
+
+
+user -> dialog : click 'Search' button
+
+dialog -> dialog : JtextfieldIDsearch.getText().isEmpty()
+
+dialog -> dialog : myModel.updateItems(products);
+
+
+note left : All products now displayed
+
+
+
+
+@enduml

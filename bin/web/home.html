@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="ShoppingApp">
+    <head>
+        <title>Website Index</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/ngStorage.min.js"></script>
+        <script src="js/shopping.js"></script>
+    </head>
+    <body>
+        <div ng-include="'menu.html'" ></div> 
+    <center>
+        
+        <hr>
+        <div class="container-fluid" id="toolbar">
+           
+<!--            <button type="button" class="btn btn-info">Home</button>
+            <button type="button" class="btn btn-info">Sign In</button>
+            <button type="button" class="btn btn-info">Home</button>
+            <button type="button" class="btn btn-info">Sign In</button>
+        -->
+        </div>
+        <hr>
+        
+        <div class="container-fluid" id="top-banner">
+            <div class="row">
+                <div class="col pt-4 pb-4 text-center">
+                    <h1 class="text">Welcome to Case Emporium</h1>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid" id="images">
+            <div class="row">
+                <div class="column">
+                        <img src="img_snow.jpg" class="rounded float-left" alt="Snow" border="1" style="width:100%; padding: 80px;">
+                    </div>
+                    <div class="column">
+                        <img src="img_forest.jpg" class="rounded float-right" alt="Forest" border="1" style="width:100%; padding: 80px;">
+                    </div>
+            </div>
+        </div>
+        
+         <div class="col pt-4 pb-4 text-center">
+            <h3 class="text">We stock New Zealands biggest range of imported iphone cases</h3>
+         </div>
+        
+</center>
+    </body>
+</html>

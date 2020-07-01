@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="ShoppingApp">
+    <head>
+        <title>Create Account</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/ngStorage.min.js"></script>
+        <script src="js/shopping.js"></script>
+    </head>
+
+    <body>
+    <center>
+
+
+        <div ng-include="'menu.html'" ></div> 
+
+        <hr>
+        <div class="container-fluid" id="top-banner">
+            <div class="row">
+                <div class="col pt-2 pb-2 text-center">
+                    <h2 class="text">Create An Account</h2>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="container" id="account creator">
+            <div class="row">
+                <div class="col pt-4 pb-4 text-center">
+                    <h3 class="text">Account Details</h3>
+
+                    <form ng-controller="CustomerController as custCtrl" ng-submit="custCtrl.registerCustomer(customer)"
+                          <div class="form-group text-left">
+                            <label for="Username">Username</label>
+                            <input type="text" class="form-control" id="Username" placeholder="Enter Username" ng-model="customer.username" required>
+
+                            <label for="First Name:" class="pt-2">First Name:</label>
+                            <input type="text" class="form-control" id="First Name:" placeholder="Enter First Name:" ng-model="customer.firstName" required>
+
+                            <label for="Last Name:"class="pt-2">Last Name:</label>
+                            <input type="text" class="form-control" id="Last Name:" placeholder="Enter Last Name:" ng-model="customer.surname" required>
+
+                            <label for="Email:"class="pt-2">Email:</label>
+                            <input type="email" class="form-control" id="Email:" placeholder="Enter Email:" ng-model="customer.emailAddress" required>
+
+                            <label for="Address:"class="pt-2">Address:</label>
+                            <input type="text" class="form-control" id="Address:" placeholder="Enter Address:" ng-model="customer.shippingAddress" required>
+
+                            <label for="Password:"class="pt-2">Password:</label>
+                            <input type="password" class="form-control" id="Password:" placeholder="Enter Password:" ng-model="customer.password" required>
+                            <br>
+                            <button type="submit"class=" btn btn-info">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </center>    
+</body>
+
+
+
+</html>

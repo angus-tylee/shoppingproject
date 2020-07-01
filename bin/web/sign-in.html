@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="ShoppingApp">
+    <head>
+        <title>Create Account</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/ngStorage.min.js"></script>
+        <script src="js/shopping.js"></script>
+    </head>
+
+    <body ng-controller="CustomerController as custCtrl"> 
+    <center>
+
+
+        <div ng-include="'menu.html'" ></div> 
+
+        <hr>
+        <div class="container-fluid" id="top-banner">
+            <div class="row">
+                <div class="col pt-2 pb-2 text-center">
+                    <h2 class="text">Please sign in to continue</h2>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="container-fluid" id="top-banner">
+            <div class="row">
+                <div class="col pt-4 pb-4 text-center">
+                    <h3 class="text">Account Details</h3>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        <div class="container" id="account creator">
+            <div class="row">
+                <div class="col pt-4 pb-4 text-center">
+
+
+                    <p class="text-danger formerror">{{custCtrl.signInMessage}}</p>
+                    <form ng-submit="custCtrl.signIn(username, password)"
+                          <div class="form-group text-left">
+                            <label for="Username">Username</label>
+                            <input type="text" class="form-control" id="Username" placeholder="Enter Username" ng-model="username" required>
+
+                            <label for="Password:"class="pt-2">Password:</label>
+                            <input type="password" class="form-control" id="Password:" placeholder="Enter Password:" ng-model="password" required>
+                            <br>
+                            <button type="submit"class=" btn btn-info">Sign In</button>
+                    </form>
+
+                </div>
+            </div>     
+        </div>
+
+
+        <h4>If you dont have an account then you can <a href="create-account.html">create one</a></h4>
+
+    </center>   
+</body>
+
+</html>

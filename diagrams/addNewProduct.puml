@@ -1,0 +1,52 @@
+@startuml
+
+skinparam style strictuml
+
+actor "User" as user
+
+participant "Administration" as main <<main>>
+main++
+
+create "MainMenu" as menu <<frame>>
+main -> menu : construct
+main -> menu++ : setVisible(true)
+
+user -> menu : click 'Add a new product'
+
+create "DataEntryDialog" as editor <<dialog>>
+menu -> editor : construct
+
+
+editor++
+
+
+create "ProductCollection" as dao <<DAO>>
+editor -> dao : construct 
+
+
+editor -> dao++ : getCategories()
+return categories
+dao--
+editor -> editor : set categories in combobox
+editor--
+
+
+user -> editor++ : enters product details
+editor--
+
+user -> editor++ : clicks save button
+editor -> editor : get product details from gui components
+
+create "Product : product" as product <<domain>>
+editor -> product : construct(product details)
+
+
+editor -> dao++ : save(product)
+dao--
+
+
+editor -> editor : dispose()
+
+destroy editor
+
+@enduml

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!--navbar navbar-dark bg-primary
+
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+-->
+
+
+
+<div class="navbar navbar-expand-lg navbar-dark primary-color" id="menu" ng-controller="CustomerController as custCtrl" ng-init="custCtrl.checkSignIn()">
+    <div class="container pt-3 pb-2">
+        <div id="welcome">{{custCtrl.welcome}}</div>
+        <a href=".">Home</a>
+        <a href="products.html" ng-if="custCtrl.signedIn">Browse Products</a>
+        <a href="cart.html" ng-if="custCtrl.signedIn">View Cart</a>
+        <a href="#" ng-if="custCtrl.signedIn" ng-click="custCtrl.signOut()">Sign Out</a>
+        <a href="sign-in.html" ng-if="!custCtrl.signedIn">Sign In</a>
+    </div>
+    
+</div>

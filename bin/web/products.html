@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html ng-app="ShoppingApp">
+    <head>
+        <title>Create Account</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/ngStorage.min.js"></script>
+        <script src="js/shopping.js"></script>
+    </head>
+
+    <body ng-controller="ProductController as prodCtrl" >
+    <center>
+        
+        <div ng-include="'menu.html'" ></div> 
+        
+        
+        <div class="container-fluid pt-4 pb-4 text-center" id="top-banner">
+                    <h1 class="text">Products</h1>
+            </div>
+        
+        
+        <div class="container-fluid  pb-5" id="toolbar">
+        <button ng-repeat="cat in prodCtrl.categories" ng-click="prodCtrl.selectCategory(cat)" type="button" class="btn btn-info mr-2">{{cat}}</button>
+        <button ng-click="prodCtrl.displayProducts()" type="button" class="btn btn-info mr-2">All</button>
+        </div>
+        
+
+        <div class="container" id="product-table">
+            <table class="table " >
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Available</th>
+                <th></th>
+            <tr ng-repeat="product in prodCtrl.products" ng-controller="ShoppingCartController as CartCtrl">
+               <td>{{product.name}}</td>
+               <td>{{product.description}}</td>
+               <td>{{product.listPrice}}</td>
+               <td>{{product.stockQuantity}}</td>
+               <td><button type="button" class="btn btn-info" ng-click="CartCtrl.buyProduct(product)">Buy</button></td>
+            </tr>
+        </table>
+        </div>
+    </center>
+    </body>
+</html>
+

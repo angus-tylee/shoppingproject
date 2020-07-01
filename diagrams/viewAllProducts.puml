@@ -1,0 +1,36 @@
+@startuml
+skinparam style strictuml
+
+actor "User" as user
+participant "Administration" as main <<main>>
+main++
+
+create "MainMenu" as menu <<frame>>
+main -> menu : construct
+main -> menu++ : setVisible(true)
+
+user -> menu : click 'View Products'
+
+create "ProductReport" as viewer <<dialog>>
+menu -> viewer : construct
+
+viewer++
+
+create "ProductCollection" as dao <<DAO>>
+viewer -> dao : construct
+
+
+viewer -> dao++ : displayProducts()
+return products
+dao--
+
+
+viewer -> viewer : set products in gui
+viewer--
+
+user -> viewer : clicks Close button
+
+viewer -> viewer : dispose()
+destroy viewer
+
+@enduml
